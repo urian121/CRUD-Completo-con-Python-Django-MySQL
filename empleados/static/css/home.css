@@ -1,0 +1,51 @@
+body {
+  background-color: #f0f0f0 !important;
+}
+hr {
+  color: #09c046 !important;
+}
+.form-check-input:checked {
+  background-color: #09c046 !important;
+  border-color: #09c046 !important;
+}
+.btn-primary {
+  background-color: #09c046 !important;
+  border: #09c046 !important;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+}
+form {
+  padding: 0px 50px !important;
+}
+table {
+  width: 98% !important;
+  margin: 0 auto !important;
+}
+#bottomRightButton {
+  position: fixed;
+  bottom: 20px; /* Espacio desde el borde inferior */
+  right: 20px; /* Espacio desde el borde derecho */
+  padding: 10px 20px;
+  background-color: #09c046;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.bi-arrow-left-circle {
+  padding: 0px 40px;
+  color: #09c046;
+}
+.bi-arrow-left-circle:hover {
+  color: #14ad47;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
+.foto_empleado {
+  border-radius: 5px;
+  display: flex;
+  margin: 0 auto;
+}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+<!---->
+{% block title %}Registrar Empleado{% endblock %}
+<!---->
+{%block content %}
+<div class="row justify-content-center">
+  <div class="col-md-12 mb-2">
+    <h2 class="text-center text-uppercase">
+      <a href="/">
+        <span><i class="bi bi-arrow-left-circle"></i></span>
+      </a>
+      Lista del Empleado
+      <hr />
+    </h2>
+  </div>
+</div>
+
+{% if empleados %}
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Edad</th>
+        <th>Género</th>
+        <th>Salario</th>
+        <th class="text-center">Foto</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for empleado in empleados %}
+      <tr>
+        <td>{{ empleado.nombre_empleado }}</td>
+        <td>{{ empleado.apellido_empleado }}</td>
+        <td>{{ empleado.email_empleado }}</td>
+        <td>{{ empleado.edad_empleado }}</td>
+        <td>{{ empleado.genero_empleado }}</td>
+        <td>{{ empleado.salario_empleado }}</td>
+        <td class="text-center">
+          {% if empleado.foto_empleado %}
+          <img
+            class="foto_empleado"
+            src="{{ empleado.foto_empleado.url }}"
+            alt="Foto de {{ empleado.nombre_empleado }}"
+            width="100" />
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<p class="text-center">No hay empleados registrados 😭.</p>
+{% endif %} {% endblock %}
