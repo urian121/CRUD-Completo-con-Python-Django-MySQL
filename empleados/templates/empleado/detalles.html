@@ -1,0 +1,51 @@
+{% extends '../base.html' %}
+<!---->
+{% block title %}Detalles del Empleado{% endblock %}
+<!---->
+{% load static %}
+<!---->
+{% block content %}
+
+<div class="row justify-content-md-center">
+  <div class="col-md-5 mb-2">
+    <div class="card shadow">
+      {% load static %} {% if empleado.foto_empleado %}
+      <img
+        class="foto_empleado mb-4 mt-4"
+        src="{{ empleado.foto_empleado.url }}"
+        alt="Foto de {{ empleado.nombre_empleado }}"
+        width="150" />
+      {% endif %}
+
+      <div class="card-body">
+        <p class="card-title">
+          <strong>Nombre del Empleado:</strong> {{ empleado.nombre_empleado }}
+        </p>
+        <p class="card-text buttom mb-3">
+          <strong>Apellido del Empleado: </strong>
+          {{ empleado.apellido_empleado }}
+        </p>
+        <p class="card-text buttom mb-3">
+          <strong>Edad del Empleado:</strong> {{ empleado.edad_empleado }} Años
+        </p>
+        <p class="card-text buttom mb-3">
+          <strong> Genero del Empleado:</strong> {{ empleado.genero_empleado }}
+        </p>
+        <p class="card-text buttom mb-3">
+          <strong>Email del Empleado:</strong> {{ empleado.email_empleado }}
+        </p>
+        <p class="card-text buttom mb-3">
+          <strong>Salario del Empleado:</strong> {{ empleado.salario_empleado }}
+        </p>
+        <p class="card-text">{{ empleado.created_at|date:"M d, Y" }}</p>
+
+        <hr />
+
+        <a class="mt-5" href="{% url 'listar_empleados' %}">
+          <i class="bi bi-arrow-left-circle"> Volver</i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

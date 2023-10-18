@@ -1,5 +1,5 @@
 body {
-  background-color: #f0f0f0 !important;
+  background-color: #def0ed !important;
 }
 hr {
   color: #09c046 !important;
@@ -48,4 +48,29 @@ a {
   border-radius: 5px;
   display: flex;
   margin: 0 auto;
+}
+
+.bi-trash,
+.bi-person-bounding-box,
+.bi-pencil-square {
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.bi-trash:hover {
+  color: #09c046;
+}
+.bi-person-bounding-box:hover {
+  color: #09c046;
+}
+.bi-pencil-square:hover {
+  color: #09c046;
+}
+
+.buttom {
+  border-bottom: 1px solid #eee;
+}
+.shadow {
+  border: none;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
 }

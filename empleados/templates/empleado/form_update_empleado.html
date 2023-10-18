@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+<!---->
+{% block title %}Actualizar Datos del Empleado{% endblock %}
+<!---->
+{%block content %}
+{% load static %}
+
+<div class="row justify-content-center">
+  <div class="col-md-12 mb-2">
+    <h1 class="text-center text-uppercase">
+      Datos del Empleado
+      <hr />
+    </h1>
+  </div>
+</div>
+
+<div class="row justify-content-md-center">
+  <form
+    name="form_empleado"
+    method="POST"
+    action="{% url 'actualizar_empleado' empleado.id %}"
+    class="row justify-content-md-center g-3"
+    enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <div class="col-md-5">
+      <label for="nombre_empleado" class="form-label">
+        Nombre del Empleado
+      </label>
+      <input
+        type="text"
+        name="nombre_empleado"
+        value="{{ empleado.nombre_empleado }}"
+        class="form-control"
+        required />
+    </div>
+    <div class="col-md-5">
+      <label for="apellido_empleado" class="form-label">
+        Apellido del Empleado
+      </label>
+      <input
+        type="text"
+        name="apellido_empleado"
+        value="{{ empleado.apellido_empleado }}"
+        class="form-control"
+        required />
+    </div>
+    <div class="col-md-5">
+      <label for="email_empleado" class="form-label">
+        Email del Empleado
+      </label>
+      <input
+        type="text"
+        name="email_empleado"
+        value="{{ empleado.email_empleado }}"
+        class="form-control"
+        required />
+    </div>
+
+    <div class="col-md-5">
+      <label for="edad_empleado" class="form-label"> Edad del Empleado </label>
+      <select name="edad_empleado" class="form-select" required>
+            {% for edad, edad_text in opciones_edad %}
+                <option value="{{ edad }}" {% if empleado.edad_empleado == edad %}selected{% endif %}>
+                    {{ edad_text }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+<div class="col-md-5">
+  <label for="genero_empleado">Género del Empleado</label>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="genero_empleado"
+      id="Masculino"
+      value="Masculino"
+      {% if empleado.genero_empleado == "Masculino" %}checked{% endif %}/>
+    <label class="form-check-label" for="Masculino">Masculino</label>
+  </div>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="genero_empleado"
+      value="Femenino"
+      id="Femenino"
+      {% if empleado.genero_empleado == "Femenino" %}checked{% endif %}/>
+    <label class="form-check-label" for="Femenino">Femenino</label>
+  </div>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="genero_empleado"
+      value="Otro"
+      id="Otro"
+      {% if empleado.genero_empleado == "Otro" %}checked{% endif %}/>
+    <label class="form-check-label" for="Otro">Otro</label>
+  </div>
+</div>
+
+    <div class="col-md-5">
+      <label for="salario_empleado" class="form-label">
+        Salario del Empleado
+      </label>
+      <input
+        type="text"
+        name="salario_empleado"
+        value="{{ empleado.salario_empleado }}"
+        class="form-control"
+        required />
+    </div>
+    <div class="col-md-5">
+      <label for="" class="form-label"> Cargar foto del Empleado </label>
+      <input
+        type="file"
+        name="foto_empleado"
+        class="form-control form-control-sm"
+         />
+    </div>
+    <div class="col-md-5">
+        <label for="" class="form-label"> Foto actual del Empleado </label>
+        {% if empleado.foto_empleado %}
+      <img
+        class="foto_empleado mb-4 mt-4"
+        src="{{ empleado.foto_empleado.url }}"
+        alt="Foto de {{ empleado.nombre_empleado }}"
+        width="150" />
+      {% endif %}
+    </div>
+
+    <div class="d-grid gap-2 col-8 mx-auto mt-5">
+      <button class="btn btn-primary" type="submit">
+        Actualizar Datos del Empleado
+      </button>
+    </div>
+  </form>
+</div>
+
+<a href="{% url 'listar_empleados' %}" id="bottomRightButton"> Empleados </a>
+{% endblock %}

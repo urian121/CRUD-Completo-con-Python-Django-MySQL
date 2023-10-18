@@ -6,10 +6,11 @@
 <div class="row justify-content-center">
   <div class="col-md-12 mb-2">
     <h2 class="text-center text-uppercase">
-      <a href="/">
+      <a href="{% url 'registrar_empleado' %}">
         <span><i class="bi bi-arrow-left-circle"></i></span>
       </a>
-      Lista del Empleado
+      Lista del Empleados
+      <i class="bi bi-file-earmark-spreadsheet-fill"></i>
       <hr />
     </h2>
   </div>
@@ -27,6 +28,7 @@
         <th>Género</th>
         <th>Salario</th>
         <th class="text-center">Foto</th>
+        <th class="text-center">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -44,8 +46,25 @@
             class="foto_empleado"
             src="{{ empleado.foto_empleado.url }}"
             alt="Foto de {{ empleado.nombre_empleado }}"
-            width="100" />
+            width="50" />
           {% endif %}
+        </td>
+        <td>
+          <span style="display: flex; justify-content: space-between">
+            <a
+              href="{% url 'detalles_empleado' empleado.id %}"
+              title="Ver Detalles del Empleado">
+              <i class="bi bi-person-bounding-box"></i>
+            </a>
+            <a
+              title="Editar datos del Empleado"
+              href="{% url 'view_form_update_empleado' empleado.id %}">
+              <i class="bi bi-pencil-square"></i>
+            </a>
+            <a href="" title="Eliminar Empleado">
+              <i class="bi bi-trash"></i>
+            </a>
+          </span>
         </td>
       </tr>
       {% endfor %}
