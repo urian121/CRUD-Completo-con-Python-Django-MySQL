@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+<!---->
+{% block title %}Carga masiva de Empleados{% endblock %}
+<!---->
+{% load static %} {% block customCSS %}
+<link rel="stylesheet" href="{% static 'css/custom_file.css' %}" />
+<link rel="stylesheet" href="{% static 'css/loading.css' %}" />
+{% endblock %}
+<!---->
+
+{%block content %}
+<div class="contentLoading" style="display: none">
+  <div class="loading-overlay">
+    <span class="loader"></span>
+    <aside>Cargando, por favor espere ...</aside>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <span id="respuesta"></span>
+
+  <div class="col-md-12 mb-2">
+    <h1 class="text-center text-uppercase">
+      <a style="float: left" href="{% url 'inicio' %}">
+        <span><i class="bi bi-arrow-left-circle"></i></span>
+      </a>
+
+      CARGA MASIVA DE EMPLEADOS
+      <a
+        style="color: #14ad47; float: right; padding: 0px 10px 0px 0px"
+        href="{% url 'view_form_carga_masiva' %}">
+        <i class="bi bi-person-fill-up"></i>
+      </a>
+      <hr />
+    </h1>
+  </div>
+</div>
+
+<div class="row justify-content-md-center">
+  <form
+    name="formXLSX"
+    id="formXLSX"
+    method="post"
+    enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="col-md-12" style="display: flex; justify-content: center">
+      <label class="input-file">
+        <b class="btn btn-primary file">
+          <i class="bi bi-file-earmark-excel"></i>
+          Selecciona un archivo XLSX
+        </b>
+        <input
+          type="file"
+          name="archivo_xlsx"
+          id="archivo_xlsx"
+          class="fileInput verde"
+          accept=".xlsx" />
+      </label>
+    </div>
+
+    <div class="d-grid gap-2 col-6 mx-auto mt-5">
+      <button class="btn btn-primary verde" type="submit">
+        Cargar Data
+        <i class="bi bi-file-earmark-spreadsheet"></i>
+      </button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
+<!---->
+{% block customJS %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'js/custom_file.js' %}"></script>
+<script src="{% static 'js/process_carga_masiva.js' %}"></script>
+{% endblock %}

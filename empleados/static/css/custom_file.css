@@ -1,0 +1,51 @@
+.input-file {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  display: block;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.input-file .btn {
+  white-space: nowrap;
+  display: inline-block;
+  margin-right: 1em;
+  vertical-align: top;
+}
+
+.input-file .material-icons {
+  float: left;
+  font-size: 16px;
+  line-height: inherit;
+  margin-right: 4px;
+}
+
+.input-file ins {
+  white-space: nowrap;
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.input-file:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.input-file input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  top: -100px;
+  z-index: -1;
+}
+.file {
+  background-color: #595959 !important;
+  border: #595959 !important;
+}

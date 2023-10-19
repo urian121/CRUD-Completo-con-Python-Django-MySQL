@@ -2,15 +2,24 @@
 <!---->
 {% block title %}Registrar Empleado{% endblock %}
 <!---->
-{%block content %}
+{%block content %} {% load static %}
+
 <div class="row justify-content-center">
   <div class="col-md-12 mb-2">
     <h2 class="text-center text-uppercase">
-      <a href="{% url 'registrar_empleado' %}">
+      <a
+        style="color: #14ad47; float: left; padding: 0px 10px 0px 0px"
+        href="{% url 'registrar_empleado' %}">
         <span><i class="bi bi-arrow-left-circle"></i></span>
       </a>
       Lista del Empleados
-      <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+      <a
+        style="color: #14ad47; float: right; padding: 0px 10px 0px 0px"
+        href="{% url 'informe_empleado' %}"
+        title="Descargar Data de Empleados"
+        download="Informe">
+        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+      </a>
       <hr />
     </h2>
   </div>
@@ -33,7 +42,7 @@
     </thead>
     <tbody>
       {% for empleado in empleados %}
-      <tr>
+      <tr id="empleado_{{ empleado.id }}">
         <td>{{ empleado.nombre_empleado }}</td>
         <td>{{ empleado.apellido_empleado }}</td>
         <td>{{ empleado.email_empleado }}</td>
@@ -42,28 +51,43 @@
         <td>{{ empleado.salario_empleado }}</td>
         <td class="text-center">
           {% if empleado.foto_empleado %}
+          <!---->
+          {% if empleado.es_extension_valida %}
           <img
             class="foto_empleado"
             src="{{ empleado.foto_empleado.url }}"
             alt="Foto de {{ empleado.nombre_empleado }}"
             width="50" />
-          {% endif %}
+          {% else %}
+          <img
+            class="foto_empleado"
+            src="{% static 'imgs/empleado_defaul.jpg'%}"
+            alt="Sin foto"
+            width="50" />
+          {% endif %} {% endif %}
         </td>
         <td>
           <span style="display: flex; justify-content: space-between">
             <a
+              class="btn btn-info info_especial"
               href="{% url 'detalles_empleado' empleado.id %}"
               title="Ver Detalles del Empleado">
               <i class="bi bi-person-bounding-box"></i>
             </a>
             <a
+              class="btn btn-success success_especial"
               title="Editar datos del Empleado"
               href="{% url 'view_form_update_empleado' empleado.id %}">
               <i class="bi bi-pencil-square"></i>
             </a>
-            <a href="" title="Eliminar Empleado">
+
+            {% csrf_token %}
+            <button
+              class="btn btn-warning warning_especial"
+              title="Eliminar Empleado"
+              onclick="borrarEmpleado('{{ empleado.id }}')">
               <i class="bi bi-trash"></i>
-            </a>
+            </button>
           </span>
         </td>
       </tr>
@@ -74,3 +98,69 @@
 {% else %}
 <p class="text-center">No hay empleados registrados 😭.</p>
 {% endif %} {% endblock %}
+<!---->
+{% block customJS %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  async function borrarEmpleado(idEmpleado) {
+    var confirmation = confirm(
+      "¿Estas seguro que deseas eliminar el empleado?"
+    );
+
+    if (confirmation) {
+      try {
+        let li = document.querySelector("#empleado_" + idEmpleado);
+
+        let csrfToken = "{{ csrf_token|escapejs }}";
+
+        // Realiza la solicitud POST utilizando Axios
+        const response = await axios({
+          method: "post",
+          url: "/eliminar-empleado/",
+          data: { idEmpleado },
+          headers: {
+            "X-CSRFToken": csrfToken,
+          },
+        });
+
+        console.log(response.data);
+        console.log(response.data.resultado);
+        if (response.data.resultado === 1) {
+          alerta("El empleado fue eliminado correctamente 😏", 1);
+          li.remove();
+        } else {
+          console.log("Error al intentar borrar el empleado");
+        }
+      } catch (error) {
+        console.error("Error al realizar la solicitud:", error);
+      }
+    }
+  }
+
+  function alerta(msj, tipo_msj) {
+    const divExistente = document.querySelector(".alert");
+    if (divExistente) {
+      divExistente.remove();
+    }
+
+    // Crear un nuevo div para la alerta
+    const divRespuesta = document.createElement("div");
+    divRespuesta.classList.add("col-md-11");
+
+    divRespuesta.innerHTML = `
+      <div class="alert ${
+        tipo_msj == 1 ? "alert-success" : "alert-danger"
+      }  alert-dismissible text-center" role="alert">
+        ${msj}
+      </div>
+  `;
+
+    setTimeout(function () {
+      divRespuesta.innerHTML = "";
+    }, 8000);
+
+    const container = document.querySelector(".row");
+    container.insertAdjacentElement("beforeend", divRespuesta);
+  }
+</script>
+{% endblock %}

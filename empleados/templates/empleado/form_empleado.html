@@ -8,6 +8,11 @@
   <div class="col-md-12 mb-2">
     <h1 class="text-center text-uppercase">
       Datos del Empleado
+      <a
+        style="color: #14ad47; float: right; padding: 0px 10px 0px 0px"
+        href="{% url 'view_form_carga_masiva' %}">
+        <i class="bi bi-person-fill-up"></i>
+      </a>
       <hr />
     </h1>
   </div>
@@ -104,10 +109,11 @@
     <div class="col-md-5"></div>
 
     <div class="d-grid gap-2 col-8 mx-auto mt-5">
-      <button class="btn btn-primary" type="submit">Registrar Empleado</button>
+      <button class="btn btn-primary" type="submit">
+        Registrar Empleado
+        <i class="bi bi-arrow-clockwise"></i>
+      </button>
     </div>
   </form>
 </div>
-
-<a href="{% url 'listar_empleados' %}" id="bottomRightButton"> Empleados </a>
 {% endblock %}

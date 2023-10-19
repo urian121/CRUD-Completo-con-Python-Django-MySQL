@@ -7,15 +7,29 @@
 {% block content %}
 
 <div class="row justify-content-md-center">
+  <a
+    title="volver"
+    style="float: left; font-size: 25px"
+    href="{% url 'listar_empleados' %}">
+    <span><i class="bi bi-arrow-left-circle"></i></span>
+  </a>
   <div class="col-md-5 mb-2">
     <div class="card shadow">
       {% load static %} {% if empleado.foto_empleado %}
+      <!---->
+      {% if empleado.es_extension_valida %}
       <img
-        class="foto_empleado mb-4 mt-4"
+        class="foto_empleado"
         src="{{ empleado.foto_empleado.url }}"
         alt="Foto de {{ empleado.nombre_empleado }}"
         width="150" />
-      {% endif %}
+      {% else %}
+      <img
+        class="foto_empleado"
+        src="{% static 'imgs/empleado_defaul.jpg'%}"
+        alt="Sin foto"
+        width="150" />
+      {% endif %} {% endif %}
 
       <div class="card-body">
         <p class="card-title">

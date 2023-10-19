@@ -8,6 +8,9 @@
 <div class="row justify-content-center">
   <div class="col-md-12 mb-2">
     <h1 class="text-center text-uppercase">
+      <a style="float: left" href="{% url 'inicio' %}">
+        <span><i class="bi bi-arrow-left-circle"></i></span>
+      </a>
       Datos del Empleado
       <hr />
     </h1>
@@ -123,12 +126,20 @@
     <div class="col-md-5">
         <label for="" class="form-label"> Foto actual del Empleado </label>
         {% if empleado.foto_empleado %}
-      <img
-        class="foto_empleado mb-4 mt-4"
-        src="{{ empleado.foto_empleado.url }}"
-        alt="Foto de {{ empleado.nombre_empleado }}"
-        width="150" />
-      {% endif %}
+          <!---->
+          {% if empleado.es_extension_valida %}
+          <img
+            class="foto_empleado"
+            src="{{ empleado.foto_empleado.url }}"
+            alt="Foto de {{ empleado.nombre_empleado }}"
+            width="50" />
+          {% else %}
+          <img
+            class="foto_empleado"
+            src="{% static 'imgs/empleado_defaul.jpg'%}"
+            alt="Sin foto"
+            width="50" />
+          {% endif %} {% endif %}
     </div>
 
     <div class="d-grid gap-2 col-8 mx-auto mt-5">
@@ -139,5 +150,4 @@
   </form>
 </div>
 
-<a href="{% url 'listar_empleados' %}" id="bottomRightButton"> Empleados </a>
 {% endblock %}

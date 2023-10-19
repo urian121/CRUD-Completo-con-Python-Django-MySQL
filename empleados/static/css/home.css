@@ -57,20 +57,23 @@ a {
   font-weight: 800;
   cursor: pointer;
 }
-.bi-trash:hover {
-  color: #09c046;
-}
-.bi-person-bounding-box:hover {
-  color: #09c046;
-}
-.bi-pencil-square:hover {
-  color: #09c046;
-}
-
 .buttom {
   border-bottom: 1px solid #eee;
 }
 .shadow {
   border: none;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+}
+.success_especial {
+  background-color: #2bbd5c !important;
+  border: 1px solid #2bbd5c !important;
+}
+.success_especial:hover {
+  color: #333 !important;
+}
+.warning_especial:hover {
+  color: red !important;
+}
+.info_especial:hover {
+  color: #fff !important;
 }
