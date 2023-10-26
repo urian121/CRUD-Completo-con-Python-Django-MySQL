@@ -19,14 +19,14 @@
         . env/bin/activate -> Para Mac
         deactivate -->Para desactivar mi entorno virtual
 
-3.  Instalar Djando desde el manejador de paquete de Python Pip, ya dentro del entorno virtual.
+3.  Instalar Django desde el manejador de paquete de Python Pip, ya dentro del entorno virtual.
 
         python -m pip install Django
         pip install Django
         Nota: para instalar Django en una version especifica
         pip install Django==4.2.4
 
-4.  Ver la versión de Djando instalada en el proyecto
+4.  Ver la versión de Django instalada en el proyecto
 
         python -m django --version
 
@@ -46,7 +46,7 @@
         pip install openpyxl
         pip install pandas
 
-8.  Crear el proyecto con Djando
+8.  Crear el proyecto con Django
 
         `django-admin startproject project_core .`
         El punto . es crucial le dice al script que instale Django en el directorio actual
