@@ -1,4 +1,6 @@
-### Un CRUD en Django y MySQL no solo permite realizar las operaciones básicas de crear, leer, actualizar y eliminar registros en una base de datos MySQL, sino que también ofrece la posibilidad de cargar datos desde un archivo Excel en la base de datos MySQL, así como exportar registros de la base de datos a archivos Excel. es decir podrás ampliar tus conocimientos al incorporar la carga y exportación de datos desde y hacia archivos Excel, enriqueciendo la funcionalidad de tu aplicación web.
+### CRUD Completo con Python -Django y MySQL
+
+##### Con este Crud aprenderas a realizar las operaciones básicas como: crear, leer, actualizar y eliminar registros en una base de datos MySQL, también ofrece la posibilidad de cargar datos desde un archivo Excel en la base de datos MySQL, así como exportar registros de la base de datos a archivos Excel, entre muchas cosas mas.
 
 1.  Crear un entorno virtual, hay muchas formas
 
