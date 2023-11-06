@@ -15,7 +15,7 @@
   </a>
   <div class="col-md-5 mb-2">
     <div class="card shadow">
-      {% load static %}
+      {% load static %} {% if empleado.foto_empleado %}
       <!---->
       {% if empleado.es_extension_valida %}
       <img
@@ -29,7 +29,7 @@
         src="{% static 'imgs/empleado_defaul.jpg'%}"
         alt="Sin foto"
         width="150" />
-      {% endif %}
+      {% endif %} {% endif %}
 
       <div class="card-body">
         <p class="card-title">
