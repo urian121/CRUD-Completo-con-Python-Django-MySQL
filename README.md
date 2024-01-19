@@ -1,4 +1,4 @@
-### CRUD Completo con Python -Django y MySQL
+### CRUD Completo con Python - Django y MySQL
 
 ##### Con este Crud aprenderas a realizar las operaciones básicas como: crear, leer, actualizar y eliminar registros en una base de datos MySQL, también ofrece la posibilidad de cargar datos desde un archivo Excel en la base de datos MySQL, así como exportar registros de la base de datos a archivos Excel, entre muchas cosas mas.
 
